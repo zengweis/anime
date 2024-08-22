@@ -17,6 +17,20 @@
 	sudo -u root bash -c 'python3 /www/wwwroot/anime/del_sql.py python3 /www/wwwroot/anime/beindex.py'
 
 sql数据库配置
+创建一个name user password均为animelist的库
+root用户进入sql，使用下列语句（密码可去bt面板7重置）
+	-- 创建数据库
+	CREATE DATABASE animelist;
+	
+	-- 创建用户并设置密码
+	CREATE USER 'animelist'@'localhost' IDENTIFIED BY 'animelist';
+	
+	-- 将新创建的用户与数据库关联，并赋予所有权限
+	GRANT ALL PRIVILEGES ON animelist.* TO 'animelist'@'localhost';
+	
+	-- 使权限立即生效
+	FLUSH PRIVILEGES;
+
 登陆
 
 	mysql -u animelist -p 
