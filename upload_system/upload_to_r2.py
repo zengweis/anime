@@ -5,7 +5,7 @@ from tqdm import tqdm
 
 # 配置 Cloudflare R2 端点和凭证
 s3_client = boto3.client('s3',
-                         endpoint_url='https://xxxxxxxx.com',
+                         endpoint_url='https://xxxxxxxx.r2.cloudflarestorage.com',
                          aws_access_key_id='xxxxxxxx',
                          aws_secret_access_key='xxxxxxxx',
                          config=botocore.client.Config(signature_version='s3v4', retries={'max_attempts': 10}))
