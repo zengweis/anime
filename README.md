@@ -8,7 +8,7 @@
     --upload_to_r2.py  上传指定目录下的文件，需要获取key与指定目录
 #### webserver
 ###### 部署于云服务器，提供网页查询服务，安装LNMP python（bot3 tdmp）
-    --beindex.py  用于创建animelist文件夹下的单独网页与index网页
+    --beindex.py  用于创建animelist文件夹下的单独网页与index网页（不支持hevc视频，无法播放）
     --del_sql.py  用于清理sql语句，防止重复查询
     --search.php  提供查询功能
 ## 配置 	
