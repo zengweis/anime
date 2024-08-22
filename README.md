@@ -1,4 +1,6 @@
 # anime
+#### 提前获取对应cloudflare r2 api 与api令牌ID 密码 ，获得r2桶的s3api中.r2.cloudflarestorage.com前面的端点
+
 #### upload_systeam
 ###### 部署于anime下载机，基于python环境，请提前安装pip install boto3 tqdm
 
