@@ -11,6 +11,8 @@
     --beindex.py  用于创建animelist文件夹下的单独网页与index网页（不支持hevc视频，无法播放）
     --del_sql.py  用于清理sql语句，防止重复查询
     --search.php  提供查询功能
+    --feedback_form.php  用于反馈问题
+    --send_feedback.php  用于反馈问题处理，发送给自己
 ## 配置 	
 ###### 本系统在下载机采用windowsserver2019，利用qbittorrent的rss订阅实现自动下载，
 需要在qbittorrent中设置下载完后自动执行upload_to_r2.py 示例语句 
@@ -45,3 +47,8 @@ root用户进入sql，使用下列语句（密码可去bt面板7重置）
    	 filename VARCHAR(255) NOT NULL,
    	 pagelink VARCHAR(255) NOT NULL
 	);
+
+
+ ##### 环境配置 
+   需要在根目录下执行
+   	composer require phpmailer/phpmailer
