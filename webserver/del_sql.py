@@ -1,9 +1,10 @@
+# 本脚本用于删除sql语句，解决在后续beindex时的语句重复问题
 import pymysql
 import os
 
 # 数据库配置
 db = pymysql.connect(
-    host="localhost",
+    host="127.0.0.1",
     user="animelist",
     password="animelist",
     database="animelist"

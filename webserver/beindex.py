@@ -4,17 +4,17 @@ import pymysql
 
 # 配置 Cloudflare R2 端点和凭证
 s3_client = boto3.client('s3',
-                         endpoint_url='https://xxxxxxxxxxxxx.r2.cloudflarestorage.com',
-                         aws_access_key_id='xxxxxxxxxx',
-                         aws_secret_access_key='xxxxxxxxx')
+                         endpoint_url='https://ae7b21228c0af396feb1372330a8b87a.r2.cloudflarestorage.com',
+                         aws_access_key_id='4ebfc38641a6ea825bdbdf141d67b2f8',
+                         aws_secret_access_key='9a685c3fabb3a75d4894a6ecadf074afb9729d3bb3cba86646de1a28a3f5bea7')
 
-bucket_name = 'xxxxxxxxxxxxx'
+bucket_name = 'anime-web-aliyun'
 output_dir = '/www/wwwroot/anime/animelist'  # 视频页面保存的目录
-index_file_path = '/www/wwwroot/anime/index.html'   # index.html 保存的文件路径
+index_file_path = '/www/wwwroot/anime/index.html'  # index.html 保存的文件路径
 
 # MySQL 数据库配置
 db = pymysql.connect(
-    host="localhost",
+    host="127.0.0.1",
     user="animelist",
     password="animelist",
     database="animelist"
@@ -92,9 +92,19 @@ def generate_html_files():
             button:hover {
                 background-color: #005bb5;
             }
+            
         </style>
+        
+    
+    
     </head>
     <body>
+            
+            <h4>想看的番不在？⬇️⬇️⬇️问题反馈</h4>
+   
+            <a href="feedback_form.php"><button>问题反馈</button></a>
+     
+     
         <h1>Video Index</h1>
         <div class="search-button">
             <a href="search.php"><button>Search</button></a>
@@ -120,6 +130,8 @@ def generate_html_files():
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>{file_name}</title>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.js"></script>
             <style>
                 body {{
                     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -129,10 +141,10 @@ def generate_html_files():
                     padding: 20px;
                     text-align: center;
                 }}
-                video {{
+                #dplayer {{
                     width: 80%;
                     max-width: 1000px;
-                    margin-top: 20px;
+                    margin: 20px auto;
                     border-radius: 8px;
                     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
                 }}
@@ -148,11 +160,28 @@ def generate_html_files():
         </head>
         <body>
             <h1>{file_name}</h1>
-            <video controls preload="auto">
-                <source src="https://anime.1a.wiki/{file}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p><a href="http://121.40.81.232/index.html">Back to Index</a></p>
+            <div id="dplayer"></div>
+            <p><a href="http://www.1a.wiki">Back to Index</a></p>
+
+            <script>
+                const dp = new DPlayer({{
+                    container: document.getElementById('dplayer'),
+                    video: {{
+                        url: 'https://anime.1a.wiki/{file}',
+                        type: 'auto',
+                    }},
+                    danmaku: {{
+                        id: '{file_name}',
+                        api: 'https://www.1a.wiki/www/wwwroot/anime/DPlayer-node-master/',
+                    }},
+                    contextmenu: [
+                        {{
+                            text: 'DPlayer',
+                            link: 'https://github.com/DIYgod/DPlayer',
+                        }},
+                    ],
+                }});
+            </script>
         </body>
         </html>
         '''
@@ -176,9 +205,10 @@ def generate_html_files():
     
     # 提交数据库更改
     db.commit()
+    
 
 # 运行脚本生成HTML文件
 generate_html_files()
-
+delete_ds_store_files(output_dir)
 # 关闭数据库连接
 db.close()

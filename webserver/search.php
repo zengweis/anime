@@ -1,6 +1,6 @@
 <?php
 // 数据库配置
-$host = 'localhost';
+$host = '127.0.0.1';
 $dbname = 'animelist';
 $user = 'animelist';
 $pass = 'animelist';
