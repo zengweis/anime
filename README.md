@@ -15,14 +15,19 @@
     --send_feedback.php  用于反馈问题处理，发送给自己
 ## 配置 	
 ###### 本系统在下载机采用windowsserver2019，利用qbittorrent的rss订阅实现自动下载，
-需要在qbittorrent中设置下载完后自动执行upload_to_r2.py 示例语句 
+需要在qbittorrent中设置下载完后自动执行upload_to_r2.py 
+示例语句 
+```
 	python "C:\your_path\upload_to_r2.py" "%F"
+```
 网页端server需设置定时任务 参考语句 
-	sudo -u root bash -c 'python3 /www/wwwroot/anime/del_sql.py python3 /www/wwwroot/anime/beindex.py'
-
+	```
+ sudo -u root bash -c 'python3 /www/wwwroot/anime/del_sql.py python3 /www/wwwroot/anime/beindex.py'
+```
 sql数据库配置
 创建一个name user password均为animelist的库
 root用户进入sql，使用下列语句（密码可去bt面板7重置）
+```
 	-- 创建数据库
 	CREATE DATABASE animelist;
 	
@@ -34,7 +39,7 @@ root用户进入sql，使用下列语句（密码可去bt面板7重置）
 	
 	-- 使权限立即生效
 	FLUSH PRIVILEGES;
-
+```
 登陆
 
 	mysql -u animelist -p 
