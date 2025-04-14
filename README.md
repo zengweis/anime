@@ -20,7 +20,8 @@
 ```
 	python "C:\your_path\upload_to_r2.py" "%F"
 ```
-网页端server需设置定时任务 参考语句 
+网页端server需设置定时任务 
+参考语句 
 	```
  sudo -u root bash -c 'python3 /www/wwwroot/anime/del_sql.py python3 /www/wwwroot/anime/beindex.py'
 ```
@@ -41,18 +42,18 @@ root用户进入sql，使用下列语句（密码可去bt面板7重置）
 	FLUSH PRIVILEGES;
 ```
 登陆
-
+```
 	mysql -u animelist -p 
-
+```
 建表
-
+```
 	USE animelist;
 	CREATE TABLE videos (
     	id INT AUTO_INCREMENT PRIMARY KEY,
    	 filename VARCHAR(255) NOT NULL,
    	 pagelink VARCHAR(255) NOT NULL
 	);
-
+```
 
  ##### 环境配置 
    需要在根目录下执行
