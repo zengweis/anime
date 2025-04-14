@@ -14,7 +14,7 @@
     --feedback_form.php  用于反馈问题
     --send_feedback.php  用于反馈问题处理，发送给自己
 ## 配置 	
-###### 本系统在下载机采用windowsserver2019，利用qbittorrent的rss订阅实现自动下载，
+###### 本系统在下载利用qbittorrent的rss订阅实现自动下载，
 需要在qbittorrent中设置下载完后自动执行upload_to_r2.py 
 示例语句 
 ```
@@ -22,7 +22,7 @@
 ```
 网页端server需设置定时任务 
 参考语句 
-	```
+```
  sudo -u root bash -c 'python3 /www/wwwroot/anime/del_sql.py python3 /www/wwwroot/anime/beindex.py'
 ```
 sql数据库配置
