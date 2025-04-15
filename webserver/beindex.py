@@ -4,9 +4,9 @@ import pymysql
 
 # 配置 Cloudflare R2 端点和凭证
 s3_client = boto3.client('s3',
-                         endpoint_url='https://ae7b21228c0af396feb1372330a8b87a.r2.cloudflarestorage.com',
-                         aws_access_key_id='4ebfc38641a6ea825bdbdf141d67b2f8',
-                         aws_secret_access_key='9a685c3fabb3a75d4894a6ecadf074afb9729d3bb3cba86646de1a28a3f5bea7')
+                         endpoint_url='https://.r2.cloudflarestorage.com',
+                         aws_access_key_id='',
+                         aws_secret_access_key='')
 
 bucket_name = 'anime-web-aliyun'
 output_dir = '/www/wwwroot/anime/animelist'  # 视频页面保存的目录
